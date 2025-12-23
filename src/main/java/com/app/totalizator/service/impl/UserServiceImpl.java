@@ -16,12 +16,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import java.util.Optional;
 
-/**
- * Implementation of UserService.
- *
- * @author Totalizator Team
- * @version 1.0
- */
+
 public class UserServiceImpl implements UserService {
     private static final Logger logger = LogManager.getLogger();
     private final UserDao userDao;
@@ -146,26 +141,20 @@ public class UserServiceImpl implements UserService {
     public User register(User user) {
         validateUser(user);
 
-        // Check if username already exists
         if (userDao.findByUsername(user.getUsername()).isPresent()) {
             throw new IllegalArgumentException("Username already exists");
         }
-
-        // Check if email already exists
         if (userDao.findByEmail(user.getEmail()).isPresent()) {
             throw new IllegalArgumentException("Email already exists");
         }
 
-        // Hash password
         user.setPassword(hashPassword(user.getPassword()));
 
-        // Set default role if not set (CLIENT)
         if (user.getRole() == null) {
             Role clientRole = new Role(3, "CLIENT", "Клиент");
             user.setRole(clientRole);
         }
 
-        // Set default balance if not set
         if (user.getBalance() == null) {
             user.setBalance(BigDecimal.ZERO);
         }

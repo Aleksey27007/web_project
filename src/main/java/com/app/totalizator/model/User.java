@@ -5,12 +5,6 @@ import lombok.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-/**
- * Entity class representing a user in the totalizator system.
- *
- * @author Totalizator Team
- * @version 1.0
- */
 
 @Builder
 @AllArgsConstructor

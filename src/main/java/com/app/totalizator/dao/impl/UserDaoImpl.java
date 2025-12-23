@@ -14,21 +14,12 @@ import java.util.Optional;
 import com.app.totalizator.model.Role;
 import static com.app.totalizator.dao.sql.UserQuery.*;
 
-/**
- * Implementation of UserDao using JDBC with PreparedStatement for SQL injection protection.
- *
- * @author Totalizator Team
- * @version 1.0
- */
+
 public class UserDaoImpl implements UserDao {
     private static final Logger logger = LogManager.getLogger();
     private final ConnectionPool connectionPool;
 
-    /**
-     * Constructor.
-     *
-     * @param connectionPool connection pool instance
-     */
+
     public UserDaoImpl(ConnectionPool connectionPool) {
         this.connectionPool = connectionPool;
     }
@@ -187,13 +178,7 @@ public class UserDaoImpl implements UserDao {
         }
     }
 
-    /**
-     * Maps ResultSet row to User object.
-     *
-     * @param resultSet ResultSet containing user data
-     * @return User object
-     * @throws SQLException if mapping fails
-     */
+
     private User mapResultSetToUser(ResultSet resultSet) throws SQLException {
         User user = new User();
         user.setId(resultSet.getInt("id"));
